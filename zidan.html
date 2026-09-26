@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIDAN | Singer & Artist</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #ff2d75;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff2d75;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 40px;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.9)),
+                radial-gradient(circle at center, #58142f, #080808 60%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero small {
+            color: #ff2d75;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: clamp(70px, 15vw, 170px);
+            line-height: 0.9;
+            margin: 20px 0;
+            font-weight: 900;
+            letter-spacing: -5px;
+        }
+
+        .hero h1 span {
+            color: #ff2d75;
+        }
+
+        .hero p {
+            color: #ccc;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #ff2d75;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background: #ff4d8c;
+            box-shadow: 0 10px 30px rgba(255,45,117,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #555;
+        }
+
+        .btn-outline:hover {
+            border-color: #ff2d75;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: #ff2d75;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #0d0d0d;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            height: 500px;
+            border-radius: 20px;
+            background:
+                linear-gradient(135deg, rgba(255,45,117,.5), transparent),
+                linear-gradient(45deg, #24101a, #151515);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255,255,255,.08);
+        }
+
+        .about-text h3 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat h3 {
+            color: #ff2d75;
+            font-size: 30px;
+        }
+
+        .stat p {
+            font-size: 13px;
+        }
+
+        /* MUSIC */
+        .music {
+            background: #080808;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .song {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #222;
+        }
+
+        .song:hover {
+            transform: translateY(-8px);
+            border-color: #ff2d75;
+        }
+
+        .cover {
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff2d75, #270918);
+        }
+
+        .cover.two {
+            background: linear-gradient(135deg, #512cff, #11062e);
+        }
+
+        .cover.three {
+            background: linear-gradient(135deg, #ff7b00, #2d0d00);
+        }
+
+        .song-info {
+            padding: 20px;
+        }
+
+        .song-info h3 {
+            font-size: 22px;
+        }
+
+        .song-info p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            border: none;
+            background: #ff2d75;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* GALLERY */
+        .gallery {
+            background: #0d0d0d;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 12px;
+            background: linear-gradient(
+                135deg,
+                #28101b,
+                #111
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: rgba(255,255,255,.15);
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            color: #ff2d75;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background:
+                radial-gradient(circle at center, #35101f, #080808 65%);
+        }
+
+        .contact h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .socials {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .socials a {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            background: #ff2d75;
+            border-color: #ff2d75;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #050505;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* MUSIC PLAYER */
+        .player {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            width: min(500px, 90%);
+            background: rgba(25,25,25,.95);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 999;
+            opacity: 0;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .player.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .player-info {
+            flex: 1;
+        }
+
+        .player-info small {
+            color: #777;
+        }
+
+        .progress {
+            width: 100%;
+            height: 4px;
+            background: #333;
+            margin-top: 8px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #ff2d75;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #0b0b0b;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-image {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 75px;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <div class="logo">ZIDAN</div>
+
+            <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+
+            <small>Official Artist Portfolio</small>
+
+            <h1>ZID<span>AN</span></h1>
+
+            <p>
+                Singer • Songwriter • Performer
+            </p>
+
+            <a href="#music" class="btn">Explore My Music</a>
+            <a href="#contact" class="btn btn-outline">Book Zidan</a>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+
+            <div class="section-title">
+                <span>Who I Am</span>
+                <h2>About Zidan</h2>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-image">
+                    Z
+                </div>
+
+                <div class="about-text">
+
+                    <h3>Music is my language.</h3>
+
+                    <p>
+                        Zidan is a passionate singer and songwriter who
+                        blends modern sounds with emotional storytelling.
+                        His music explores love, dreams, life and everything
+                        in between.
+                    </p>
+
+                    <p>
+                        From intimate acoustic performances to energetic
+                        live shows, Zidan brings emotion and personality
+                        to every performance.
+                    </p>
+
+                    <div class="stats">
+
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Live Shows</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>Original Songs</p>
+                        </div>
+
+                        <div class="stat">
+                            <h3>10K+</h3>
+                            <p>Listeners</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- MUSIC -->
+    <section class="music" id="music">
+
+        <div class="container">
+
+            <div class="section-title">
+                <span>Listen Now</span>
+                <h2>Latest Music</h2>
+            </div>
+
+            <div class="music-grid">
+
+                <div class="song">
+
+                    <div class="cover">
+                        Z
+                    </div>
+
+                    <div class="song-info">
+                        <h3>Midnight Dreams</h3>
+                        <p>Single • 2026</p>
+
+                        <button
+                            class="play-btn"
+                            onclick="playSong('Midnight Dreams')">
+                            ▶
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <div class="song">
+
+                    <div class="cover two">
+                        Z
+                    </div>
+
+                    <div class="song-info">
+                        <h3>Lost Without You</h3>
+                        <p>Single • 2025</p>
+
+                        <button
+                            class="play-btn"
+                            onclick="playSong('Lost Without You')">
+                            ▶
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <div class="song">
+
+                    <div class="cover three">
+                        Z
+                    </div>
+
+                    <div class="song-info">
+                        <h3>Fire In My Soul</h3>
+                        <p>Single • 2025</p>
+
+                        <button
+                            class="play-btn"
+                            onclick="playSong('Fire In My Soul')">
+                            ▶
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+
+        <div class="container">
+
+            <div class="section-title">
+                <span>Moments</span>
+                <h2>Gallery</h2>
+            </div>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item">♪</div>
+                <div class="gallery-item">♫</div>
+                <div class="gallery-item">♪</div>
+                <div class="gallery-item">♫</div>
+                <div class="gallery-item">♪</div>
+                <div class="gallery-item">♫</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <h2>Let's Make Music.</h2>
+
+            <p>
+                For bookings, collaborations and business inquiries,
+                get in touch with Zidan.
+            </p>
+
+            <a
+                href="mailto:zidan@example.com"
+                class="btn">
+                Contact Me
+            </a>
+
+            <div class="socials">
+
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="YouTube">YT</a>
+                <a href="#" aria-label="Spotify">SP</a>
+                <a href="#" aria-label="TikTok">TK</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Zidan. All Rights Reserved.
+    </footer>
+
+
+    <!-- MUSIC PLAYER -->
+    <div class="player" id="player">
+
+        <button
+            class="play-btn"
+            onclick="togglePlayer()"
+            id="playerButton">
+            ❚❚
+        </button>
+
+        <div class="player-info">
+
+            <strong id="songTitle">
+                Now Playing
+            </strong>
+
+            <br>
+
+            <small>Zidan</small>
+
+            <div class="progress">
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // MOBILE MENU
+        function toggleMenu() {
+            const nav = document.getElementById("navLinks");
+            nav.classList.toggle("active");
+        }
+
+
+        // CLOSE MOBILE MENU AFTER CLICKING LINK
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("active");
+
+            });
+
+        });
+
+
+        // FAKE MUSIC PLAYER
+        let playing = false;
+        let progress = 0;
+        let timer;
+
+        function playSong(song) {
+
+            const player = document.getElementById("player");
+            const title = document.getElementById("songTitle");
+            const button = document.getElementById("playerButton");
+
+            title.textContent = song;
+
+            player.classList.add("active");
+
+            playing = true;
+            button.textContent = "❚❚";
+
+            progress = 0;
+
+            clearInterval(timer);
+
+            timer = setInterval(() => {
+
+                progress += 1;
+
+                document.getElementById("progressBar")
+                    .style.width = progress + "%";
+
+                if (progress >= 100) {
+
+                    clearInterval(timer);
+
+                    playing = false;
+
+                    button.textContent = "▶";
+
+                }
+
+            }, 100);
+
+        }
+
+
+        function togglePlayer() {
+
+            const button =
+                document.getElementById("playerButton");
+
+            if (playing) {
+
+                playing = false;
+
+                clearInterval(timer);
+
+                button.textContent = "▶";
+
+            } else {
+
+                playing = true;
+
+                button.textContent = "❚❚";
+
+                timer = setInterval(() => {
+
+                    progress += 1;
+
+                    document.getElementById("progressBar")
+                        .style.width = progress + "%";
+
+                    if (progress >= 100) {
+
+                        clearInterval(timer);
+
+                        playing = false;
+
+                        button.textContent = "▶";
+
+                    }
+
+                }, 100);
+
+            }
+
+        }
+
+
+        // SCROLL REVEAL EFFECT
+        const sections =
+            document.querySelectorAll("section");
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.style.opacity = "1";
+                            entry.target.style.transform = "translateY(0)";
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.1
+                }
+            );
+
+
+        sections.forEach(section => {
+
+            section.style.opacity = "0";
+            section.style.transform = "translateY(30px)";
+            section.style.transition = "all 0.8s ease";
+
+            observer.observe(section);
+
+        });
+
+    </script>
+
+</body>
+</html>
